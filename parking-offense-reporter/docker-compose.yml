@@ -1,0 +1,74 @@
+version: '3.8'
+    
+services:
+    
+  configuration-managment:
+    environment:
+      - GITHUB-PASSWORD=${GITHUB-PASSWORD}
+    build: parking-offense-configuration-management
+    
+  discovery-server:
+    environment:
+      - CONFIGSERVER_NAME=${CONFIGSERVER_NAME}
+    ports:
+      - 8761:8761
+    build: logs-bugs-discovery-server
+    
+#  analyzer:
+#    environment:
+#      - PASSWORD_KARAFKA=${PASSWORD_KARAFKA}
+#      - USERNAME_KARAFKA=${USERNAME_KARAFKA}
+#      - SPRING_PROFILES_ACTIVE=${ACTIVE_PROFILE}
+#      - CONFIGSERVER_NAME=${CONFIGSERVER_NAME}
+#    build: logs-analyzer
+
+#  email-notifier:
+#    environment:
+#      - PASSWORD_KARAFKA=${PASSWORD_KARAFKA}
+#      - USERNAME_KARAFKA=${USERNAME_KARAFKA}
+#      - GMAIL_PASSWORD=${GMAIL_PASSWORd}
+#      - GMAIL_USERNAME=${GMAIL_USERNAME}
+#      - EUREKA_SERVER=${EUREKA_SERVER}
+#      - CONFIGSERVER_NAME=${CONFIGSERVER_NAME}
+#    build: logs-bugs-email-notifier
+
+#  reporter-back-office:
+#    environment:
+#      - POSTGRES_USERNAME=${POSTGRES_USERNAME}
+#      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+#    build: logs-bugs-reporter-back-office
+    
+#  db-populator:
+#    environment:
+#      - PASSWORD_KARAFKA=${PASSWORD_KARAFKA}
+#      - USERNAME_KARAFKA=${USERNAME_KARAFKA}
+#      - MONGO_USERNAME=${MONGO_USERNAME}
+#      - MONGO_PASSWORD=${MONGO_PASSWORD}
+#      - CONFIGSERVER_NAME=${CONFIGSERVER_NAME}
+#    build: logs-db-populator
+    
+#  logs-info-back-office:
+#    environment:
+#      - MONGO_USERNAME=${MONGO_USERNAME}
+#      - MONGO_PASSWORD=${MONGO_PASSWORD}
+#      - CONFIGSERVER_NAME=${CONFIGSERVER_NAME}
+#    build: logs-info-back-office
+
+    
+#  accounts-provider:
+#    environment:
+#      - PORT=0
+#      - MONGO_USERNAME=${MONGO_USERNAME}
+#      - MONGO_PASSWORD=${MONGO_PASSWORD}
+#      - EUREKA_SERVER=${EUREKA_SERVER}
+#      - CONFIGSERVER_NAME=${CONFIGSERVER_NAME}
+#    build: logs-bugs-accounts-provider
+    
+#  gateway:
+#    ports:
+#      - 9191:9191
+#    environment:
+#      - EUREKA_SERVER=${EUREKA_SERVER}
+#      - SPRING_PROFILES_ACTIVE=${ACTIVE_PROFILE}
+#      - CONFIGSERVER_NAME=${CONFIGSERVER_NAME}
+#    build: logs-bugs-gateway
